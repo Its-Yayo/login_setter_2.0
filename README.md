@@ -9,7 +9,7 @@ Open Source test project. Feel free to modify it by yourself.
 
 If you wanna store this repo in your localhost, make sure you type the following commands. 
 ```
-$ git clone https://github.com/Its-Yayo/login_setter.git
+$ git clone https://github.com/Its-Yayo/login_setter_2,0.git
 $ cd login_setter
 ```
 
