@@ -27,7 +27,10 @@ app.post('/login', async (req, res) => {
 
         // Connect to database and await response
         let pool = await sql.connect(config);
-        console.log('Connected to database');
+        console.log('Pool:', pool);
+
+        if (pool) console.log('Connected to database');
+        else console.log('Connection failed');
 
         let request = pool.request();
 
@@ -37,7 +40,7 @@ app.post('/login', async (req, res) => {
 
         // Execute stored procedure
         let result = await request.execute('Insert_Credentials');
-        res.status(200).render('login', { message: 'Login successful' });
+        res.status(200).render('login', { message: 'Login successful. Credentials are stored in DB' });
    } catch (err) {
        console.error(err);
        res.status(500).render('login', { message: 'Login failed' });
@@ -46,7 +49,7 @@ app.post('/login', async (req, res) => {
 
 // API to deploy init app page
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'login.html'));
+    res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
 app.get('/', (req, res) => {
