@@ -8,11 +8,11 @@ const port = 8000;
 
 // Set path to static files
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 
 // Connection string parameters.
-const config = {
+let config = {
     user: 'root',
     password: '',
     server: 'localhost',
