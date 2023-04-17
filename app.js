@@ -1,14 +1,9 @@
 const express = require('express');
 const sql = require('mssql');
 const path = require('path');
-module.exports = require('./lib/tedious')
 
 const app = express();
 const port = 8000;
-
-export function VarChar(number) {
-    return undefined;
-}
 
 // Connection string parameters.
 const config = {
@@ -45,7 +40,13 @@ app.post('/login', async (req, res) => {
 
 // API to deploy init app page
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, 'login.html'));
+});
+
+app.get('/', (req, res) => {
+    res.status(400);
+    res.type('text/plain');
+    res.send('<h1>404 - Not Found</h1>');
 });
 
 // API to launch server
