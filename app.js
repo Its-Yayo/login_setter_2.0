@@ -14,8 +14,8 @@ export function VarChar(number) {
 const config = {
     user: 'root',
     password: '',
-    server: 'localhost'
-    database: 'tests'
+    server: 'localhost',
+    database: 'tests',
     port: 1433
 };
 
@@ -24,7 +24,10 @@ app.post('/login', async (req, res) => {
     try {
         const { username, password } = req.body;
 
+        // Connect to database and await response
         let pool = await sql.connect(config);
+        console.log('Connected to database');
+
         let request = pool.request();
 
         // Set parameters
@@ -33,8 +36,6 @@ app.post('/login', async (req, res) => {
 
         // Execute stored procedure
         let result = await request.execute('Insert_Credentials');
-
-        // Send response
         res.status(200).render('login', { message: 'Login successful' });
    } catch (err) {
        console.error(err);
