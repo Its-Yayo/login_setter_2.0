@@ -17,7 +17,9 @@ let config = {
     password: '',
     server: 'localhost',
     database: 'tests',
-    port: 1433
+    options: {
+        encrypt: false,
+    },
 };
 
 // API to connect to database and execute query.
@@ -29,8 +31,11 @@ app.post('/login', async (req, res) => {
         let pool = await sql.connect(config);
         console.log('Pool:', pool);
 
-        if (pool) console.log('Connected to database');
-        else console.log('Connection failed');
+        if (pool) {
+            console.log('Connected to database');
+        } else {
+            console.log('Connection failed');
+        }
 
         let request = pool.request();
 
