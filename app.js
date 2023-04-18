@@ -13,13 +13,14 @@ app.set('view engine', 'ejs');
 
 // Connection string parameters.
 let config = {
-    user: 'root',
-    password: '',
+    user: process.env.USER,
+    password: process.env.PASSWORD,
     server: 'localhost',
-    database: 'tests',
+    database: process.env.DATABASE,
     options: {
-        encrypt: false,
-    },
+        encrypt: true,
+        trustServerCertificate: true
+    }
 };
 
 // API to connect to database and execute query.
