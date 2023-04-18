@@ -3,6 +3,8 @@ const sql = require('mssql');
 const path = require('path');
 const bodyParser = require('body-parser');
 
+require('dotenv').config();
+
 const app = express();
 const port = 8000;
 
@@ -13,7 +15,7 @@ app.set('view engine', 'ejs');
 
 // Connection string parameters.
 let config = {
-    user: process.env.USER,
+    user: 'sa',
     password: process.env.PASSWORD,
     server: 'localhost',
     database: process.env.DATABASE,
@@ -32,11 +34,7 @@ app.post('/login', async (req, res) => {
         let pool = await sql.connect(config);
         console.log('Pool:', pool);
 
-        if (pool) {
-            console.log('Connected to database');
-        } else {
-            console.log('Connection failed');
-        }
+        console.log('Connected to database');
 
         let request = pool.request();
 
