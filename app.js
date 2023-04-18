@@ -15,7 +15,7 @@ app.set('view engine', 'ejs');
 
 // Connection string parameters.
 let config = {
-    user: 'sa',
+    user: process.env.USER,
     password: process.env.PASSWORD,
     server: 'localhost',
     database: process.env.DATABASE,
