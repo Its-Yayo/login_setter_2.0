@@ -66,5 +66,5 @@ app.get('/', (req, res) => {
 
 // API to launch server
 app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+    console.log(`Server running at http://localhost:${port}/`);
 });
