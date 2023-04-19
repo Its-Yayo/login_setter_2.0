@@ -39,11 +39,11 @@ app.post('/login', async (req, res) => {
         let request = pool.request();
 
         // Set parameters
-        request.input('user', sql.VarChar(50), username);
-        request.input('password', sql.VarChar(50), password);
+        request.input('users', sql.VarChar(50), username);
+        request.input('passwords', sql.VarChar(50), password);
 
         // Execute stored procedure
-        let result = await request.execute('Insert_Credentials');
+        let result = await request.execute('dbo.InsertCredentials');
         res.status(200).render('login', { message: 'Login successful. Credentials are stored in DB' });
    } catch (err) {
        console.error(err);
