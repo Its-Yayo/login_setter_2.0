@@ -17,3 +17,29 @@ To update any changes, make sure you follow the following command.
 
 ```
 $ git pull
+```
+
+You must need these packages to run locally your code. You must start installing express natively, by typing the following command. 
+
+```
+$ npm i express -D
+```
+
+Node supports mssql natively. You can try it by typing the following command.
+
+```
+$ npm i mssql -D
+```
+
+Also, this test project requires dotenv to support enviroment variables, as part of the environment in which a process runs a thread. In this case, we're 
+requiring them for the user, password and DB's name. You can try it by typing the following command.
+
+```
+$ npm i dotenv -D
+```
+
+Also, we're using body-parsing to analize each JSON object or any HTTP request/response in the server-side code. It's parsed in a middleware with the ```req.body``` property. You can try it by typing the following command. 
+
+```
+$ npm i body-parser -D
+```
